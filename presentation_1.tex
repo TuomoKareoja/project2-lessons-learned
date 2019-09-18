@@ -15,7 +15,7 @@
 %	PACKAGES AND THEMES
 %----------------------------------------------------------------------------------------
 
-\documentclass{beamer}
+\documentclass[10pt]{beamer}
 
 \mode<presentation> {
 
@@ -77,7 +77,6 @@
 }
 
 \graphicspath{ {./figures/} }
-
 \usepackage{graphicx} % Allows including images
 \usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
 
@@ -101,10 +100,10 @@ Blackwell \\ % Your institution for the title page
 \titlepage % Print the title page as the first slide
 \end{frame}
 
-\begin{frame}
-\frametitle{Overview} % Table of contents slide, comment this block out to remove it
-\tableofcontents % Throughout your presentation, if you choose to use \section{} and \subsection{} commands, these will automatically be printed on this slide as an overview of your presentation
-\end{frame}
+% \begin{frame}
+% \frametitle{Overview} % Table of contents slide, comment this block out to remove it
+% \tableofcontents % Throughout your presentation, if you choose to use \section{} and \subsection{} commands, these will automatically be printed on this slide as an overview of your presentation
+% \end{frame}
 
 %----------------------------------------------------------------------------------------
 %	PRESENTATION SLIDES
@@ -119,12 +118,32 @@ Blackwell \\ % Your institution for the title page
 %------------------------------------------------
 
 \begin{frame}
-\frametitle{Figure}
-Uncomment the code on this slide to include your own image from the same directory as the template .TeX file.
+\frametitle{Filling Missing Data with a Predictive Model}
+% Uncomment the code on this slide to include your own image from the same directory as the template .TeX file.
 
+\begin{columns}[c] % The "c" option specifies centered vertical alignment while the "t" option is used for top vertical alignment
+
+\column{.4\textwidth} % Left column and width
+
+\textbf{Problem:} Some of the customer data has missing values and this could skew further analyses if not fixed
+
+\uncover<2->{
+\textbf{Solution:} Create a model to predict the missing values from the values of the other columns
+}
+
+\uncover<3->{
+\textbf{Knowledge Gained:} The data are missing at random so the missing values don't skew the analysis
+}
+
+\column{.6\textwidth} % Right column and width
+
+\uncover<1->{
 \begin{figure}
-    \includegraphics[width=0.9\linewidth, keepaspectratio]{brand_preference_marked_percentages.png}
+    \includegraphics[width=1.1\linewidth, keepaspectratio]{brand_preference_marked.png}
 \end{figure}
+}
+
+\end{columns}
 
 \end{frame}
 
@@ -133,12 +152,36 @@ Uncomment the code on this slide to include your own image from the same directo
 %------------------------------------------------
 
 \begin{frame}
-\frametitle{Figure}
-Uncomment the code on this slide to include your own image from the same directory as the template .TeX file.
+\frametitle{Predicting Sales of Upcoming Products}
+
+\begin{columns}[c] % The "c" option specifies centered vertical alignment while the "t" option is used for top vertical alignment
+
+\column{.4\textwidth} % Left column and width
+
+\textbf{Problem:} We would want to know the future sales volumes of our upcoming products
+
+\uncover<2->{
+\textbf{Solution:} Create a model to predict the sales volume from customer reviews and product attributes
+}
+
+\uncover<3->{
+\textbf{Knowledge Gained:} Some products a predicted to perform way better than others, but a better model
+would need more data
+}
+
+\column{.6\textwidth} % Right column and width
+
+\uncover<1->{
+\begin{figure}
+    \includegraphics[width=0.75\linewidth,keepaspectratio]{predicted_volume_rf.png}
+\end{figure}
 
 \begin{figure}
-    \includegraphics[width=0.9\linewidth, keepaspectratio]{brand_preference_marked_percentages.png}
+    \includegraphics[width=0.75\linewidth,keepaspectratio]{predictions_final_rf.png}
 \end{figure}
+}
+
+\end{columns}
 
 \end{frame}
 
@@ -147,12 +190,35 @@ Uncomment the code on this slide to include your own image from the same directo
 %------------------------------------------------
 
 \begin{frame}
-\frametitle{Figure}
-Uncomment the code on this slide to include your own image from the same directory as the template .TeX file.
+\frametitle{Assessing Electronidex Sales Profile}
 
+\begin{columns}[c] % The "c" option specifies centered vertical alignment while the "t" option is used for top vertical alignment
+
+\column{.4\textwidth} % Left column and width
+
+\textbf{Problem:} Is Electronidex product line compatible to ours and are there potential
+cross-selling possibilities
+
+\uncover<2->{
+\textbf{Solution:} Find product categories that are overlapping and those
+that fit together and do a market basket analysis of their sales data
+}
+
+\uncover<3->{
+\textbf{Knowledge Gained:} About 50 \% of our current profits come from products that overlap with
+Electronidex offerings. There seems to be customer group that we do not serve at the moment and which
+would be interested in our products.
+}
+
+\column{.6\textwidth} % Right column and width
+
+\uncover<1->{
 \begin{figure}
-    \includegraphics[width=0.9\linewidth, keepaspectratio]{brand_preference_marked_percentages.png}
+    \includegraphics[width=1.0\linewidth,keepaspectratio]{apriori_product_category_level_graph.png}
 \end{figure}
+}
+
+\end{columns}
 
 \end{frame}
 
@@ -161,151 +227,47 @@ Uncomment the code on this slide to include your own image from the same directo
 %------------------------------------------------
 
 \begin{frame}
-\frametitle{Figure}
-Uncomment the code on this slide to include your own image from the same directory as the template .TeX file.
+\frametitle{Lessons Learned}
 
-\begin{figure}
-    \includegraphics[width=0.9\linewidth, keepaspectratio]{brand_preference_marked_percentages.png}
-\end{figure}
-
-\end{frame}
-
-%------------------------------------------------
-
-\begin{frame}
-\frametitle{Multiple Columns}
-\begin{columns}[c] % The "c" option specifies centered vertical alignment while the "t" option is used for top vertical alignment
-
-\column{.45\textwidth} % Left column and width
-\textbf{Heading}
 \begin{enumerate}
-\item Statement
-\item Explanation
-\item Example
+    \item
+
+        \textbf{Lesson:} Data mining can be used to help further analysis of the data by fixing its problems
+
+    \pause
+        \textbf{Advice:} Find important datasets where we have problems with data quality and try to fix this
+        by creating models to correct the errors
+        
+    \item
+
+    \pause
+        \textbf{Lesson:} We can glean predictive information from even very small datasets, but predictive models
+        created from this kind of data can only give very rough estimates
+
+    \pause
+        \textbf{Advice:} More investments in gathering data of high quality from our processes and products
+
+    \pause
+    \item
+
+    \pause
+        \textbf{Lesson:} Poorly defined questions are hard to answer especially when datasets are big
+
+    \pause
+        \textbf{Advice:} Collaborate with data scientists while still at the process of formulating
+        the business questions and before acquiring the data
+
+    \pause
+    \item
+
+    \pause
+        \textbf{Lesson:} Datasets can contain information whose value is not clear from the dataset itself
+
+    \pause
+        \textbf{Advice:} Pair data scientists with analysts that have relevant domain expertise
+
 \end{enumerate}
 
-\column{.5\textwidth} % Right column and width
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lectus nisl, ultricies in feugiat rutrum, porttitor sit amet augue. Aliquam ut tortor mauris. Sed volutpat ante purus, quis accumsan dolor.
-
-\end{columns}
-\end{frame}
-
-%------------------------------------------------
-
-\begin{frame}
-\frametitle{Multiple Columns}
-\begin{columns}[c] % The "c" option specifies centered vertical alignment while the "t" option is used for top vertical alignment
-
-\column{.45\textwidth} % Left column and width
-\textbf{Heading}
-\begin{enumerate}
-\item Statement
-\item Explanation
-\item Example
-\end{enumerate}
-
-\column{.5\textwidth} % Right column and width
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lectus nisl, ultricies in feugiat rutrum, porttitor sit amet augue. Aliquam ut tortor mauris. Sed volutpat ante purus, quis accumsan dolor.
-
-\end{columns}
-\end{frame}
-
-%------------------------------------------------
-
-\begin{frame}
-\frametitle{Table}
-\begin{table}
-\begin{tabular}{l l l}
-\toprule
-\textbf{Treatments} & \textbf{Response 1} & \textbf{Response 2}\\
-\midrule
-Treatment 1 & 0.0003262 & 0.562 \\
-Treatment 2 & 0.0015681 & 0.910 \\
-Treatment 3 & 0.0009271 & 0.296 \\
-\bottomrule
-\end{tabular}
-\caption{Table caption}
-\end{table}
-\end{frame}
-
-%------------------------------------------------
-
-\begin{frame}
-\frametitle{Theorem}
-\begin{theorem}[Mass--energy equivalence]
-$E = mc^2$
-\end{theorem}
-\end{frame}
-
-%------------------------------------------------
-
-\begin{frame}[fragile] % Need to use the fragile option when verbatim is used in the slide
-\frametitle{Verbatim}
-\begin{example}[Theorem Slide Code]
-\begin{verbatim}
-\begin{frame}
-\frametitle{Theorem}
-\begin{theorem}[Mass--energy equivalence]
-$E = mc^2$
-\end{theorem}
-\end{frame}\end{verbatim}
-\end{example}
-\end{frame}
-
-
-%------------------------------------------------
-
-\begin{frame}[fragile] % Need to use the fragile option when verbatim is used in the slide
-\frametitle{Citation}
-An example of the \verb|\cite| command to cite within the presentation:\\~
-
-This statement requires citation \cite{p1}.
-\end{frame}
-
-%------------------------------------------------
-
-\begin{frame}
-\frametitle{Paragraphs of Text}
-Sed iaculis dapibus gravida. Morbi sed tortor erat, nec interdum arcu. Sed id lorem lectus. Quisque viverra augue id sem ornare non aliquam nibh tristique. Aenean in ligula nisl. Nulla sed tellus ipsum. Donec vestibulum ligula non lorem vulputate fermentum accumsan neque mollis.\\~\\
-
-Sed diam enim, sagittis nec condimentum sit amet, ullamcorper sit amet libero. Aliquam vel dui orci, a porta odio. Nullam id suscipit ipsum. Aenean lobortis commodo sem, ut commodo leo gravida vitae. Pellentesque vehicula ante iaculis arcu pretium rutrum eget sit amet purus. Integer ornare nulla quis neque ultrices lobortis. Vestibulum ultrices tincidunt libero, quis commodo erat ullamcorper id.
-\end{frame}
-
-%------------------------------------------------
-
-\begin{frame}
-\frametitle{Bullet Points}
-\begin{itemize}
-\item Lorem ipsum dolor sit amet, consectetur adipiscing elit
-\item Aliquam blandit faucibus nisi, sit amet dapibus enim tempus eu
-\item Nulla commodo, erat quis gravida posuere, elit lacus lobortis est, quis porttitor odio mauris at libero
-\item Nam cursus est eget velit posuere pellentesque
-\item Vestibulum faucibus velit a augue condimentum quis convallis nulla gravida
-\end{itemize}
-\end{frame}
-
-%------------------------------------------------
-
-\begin{frame}
-\frametitle{Blocks of Highlighted Text}
-\begin{block}{Block 1}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lectus nisl, ultricies in feugiat rutrum, porttitor sit amet augue. Aliquam ut tortor mauris. Sed volutpat ante purus, quis accumsan dolor.
-\end{block}
-
-\begin{block}{Block 2}
-Pellentesque sed tellus purus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum quis magna at risus dictum tempor eu vitae velit.
-\end{block}
-
-\begin{block}{Block 3}
-Suspendisse tincidunt sagittis gravida. Curabitur condimentum, enim sed venenatis rutrum, ipsum neque consectetur orci, sed blandit justo nisi ac lacus.
-\end{block}
-\end{frame}
-
-
-%------------------------------------------------
-
-\begin{frame}
-\Huge{\centerline{The End}}
 \end{frame}
 
 %----------------------------------------------------------------------------------------
